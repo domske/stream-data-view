@@ -21,6 +21,12 @@ Easy work with data bytes like a pro.
 I recommend to use TypeScript. This library has a documented declaration file.
 A complete documentation about the API is planned.
 
+### Installation
+
+```bash
+npm i -S stream-data-view
+```
+
 ### Quick Guide
 
 ```js
