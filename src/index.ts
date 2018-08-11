@@ -1,7 +1,7 @@
 import { StreamDataView } from './stream';
 
-(function(scope) {
-  scope.StreamDataView = StreamDataView;
-})(this);
+if (window) {
+  (window as any).StreamDataView = StreamDataView;
+}
 
 export default StreamDataView;

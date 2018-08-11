@@ -1,4 +1,5 @@
-import { TextDecoder, TextEncoder } from './text-encoding';
+import { TextDecoder } from './text-encoding/text-decoder';
+import { TextEncoder } from './text-encoding/text-encoder';
 
 /**
  * Stream Date View
@@ -7,6 +8,19 @@ import { TextDecoder, TextEncoder } from './text-encoding';
  * @license Apache-2.0
  */
 export class StreamDataView {
+
+  /**
+   * Creates a new instance of StreamDataView.
+   * e.g. from the string of toByteString()
+   * @param str Byte string like '48 65 6C 6C 6F'
+   */
+  public static fromByteString(str: string) {
+    const length = str.split(' ').length;
+    const stream = new StreamDataView(length);
+    stream.fromByteString(str);
+    return stream;
+  }
+
   private offset: number;
   private view: DataView;
   private littleEndian: boolean;
@@ -24,18 +38,6 @@ export class StreamDataView {
 
     this.view = new DataView(buffer);
     this.littleEndian = !bigEndian;
-  }
-
-  /**
-   * Creates a new instance of StreamDataView.
-   * e.g. from the string of toByteString()
-   * @param str Byte string like '48 65 6C 6C 6F'
-   */
-  static fromByteString(str: string) {
-    const length = str.split(' ').length;
-    const stream = new StreamDataView(length);
-    stream.fromByteString(str);
-    return stream;
   }
 
   /**
@@ -491,8 +493,8 @@ export class StreamDataView {
    * @param str Byte string.
    */
   public fromByteString(str: string) {
-    let byteArray = str.split(' ');
-    let buffer = new ArrayBuffer(byteArray.length);
+    const byteArray = str.split(' ');
+    const buffer = new ArrayBuffer(byteArray.length);
     this.view = new DataView(buffer);
 
     this.setNextBytes(new Uint8Array(byteArray.map(b => parseInt(b, 16))));

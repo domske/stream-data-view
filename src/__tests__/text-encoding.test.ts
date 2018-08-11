@@ -1,4 +1,5 @@
-import { TextDecoder, TextEncoder } from '../text-encoding';
+import { TextDecoder } from '../text-encoding/text-decoder';
+import { TextEncoder } from '../text-encoding/text-encoder';
 
 test('test utf-8', () => {
   let encoder = new TextEncoder('utf-8');
