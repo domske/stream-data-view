@@ -53,12 +53,7 @@ console.log(StreamDataView.fromByteString('41 77 65 73 6F 6D 65').toTextString()
 
 ## Dependencies
 
-Just JavaScript. But expected ES6 (ES2015). Your browser should support:
-
-* DataView
-* TextEncoder and TextDecoder
-
-You can use polyfills on older JavaScript engines.
+Just JavaScript. But expected ES6 (ES2015). Your browser should support DataView.
 
 ## Contribution
 
