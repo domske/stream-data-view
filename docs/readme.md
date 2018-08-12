@@ -1,4 +1,4 @@
-# Documentation `1.0.0`
+# Documentation `1.1.0`
 
 ## `class` **StreamDataView**
 
