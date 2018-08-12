@@ -59,6 +59,41 @@ Just JavaScript. But expected ES6 (ES2015). Your browser should support DataView
 
 Any feedback like issues about bugs, feature-requests and project setup is welcome.
 
+## Build
+
+Install packages.
+
+```bash
+npm i
+```
+
+Build to dist.
+
+```bash
+npm run build
+```
+
+Format the source code.
+
+```bash
+npm run format
+```
+
+Run linter.
+
+```bash
+npm run lint
+```
+
+Run unit tests.
+
+```bash
+npm run test
+```
+
+
+
+
 ## License
 
 **Apache-2.0**
