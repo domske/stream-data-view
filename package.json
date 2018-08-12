@@ -1,6 +1,6 @@
 {
   "name": "stream-data-view",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Easy work with data bytes like a pro.",
   "keywords": [
     "stream",
