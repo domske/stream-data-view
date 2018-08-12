@@ -4,4 +4,4 @@ if (window) {
   (window as any).StreamDataView = StreamDataView;
 }
 
-export default StreamDataView;
+export { StreamDataView };
