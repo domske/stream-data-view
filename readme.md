@@ -19,7 +19,8 @@ Easy work with data bytes like a pro.
 ## Documentation
 
 I recommend to use TypeScript. This library has a documented declaration file.
-A complete documentation about the API is planned.
+
+[API Docs](docs)
 
 ### Installation
 

@@ -14,7 +14,7 @@ export class StreamDataView {
    * e.g. from the string of toByteString()
    * @param str Byte string like '48 65 6C 6C 6F'
    */
-  public static fromByteString(str: string) {
+  public static fromByteString(str: string): StreamDataView {
     const length = str.split(' ').length;
     const stream = new StreamDataView(length);
     stream.fromByteString(str);
@@ -42,14 +42,15 @@ export class StreamDataView {
 
   /**
    * Returns the array buffer of the data view.
+   * @return The buffer of this data view.
    */
   public getBuffer(): ArrayBuffer {
     return this.view.buffer;
   }
 
   /**
-   * Moves the offset forwards.
-   * @param length Byte length.
+   * Moves the offset relative in a direction.
+   * @param length Positive or negative number byte length.
    */
   public skip(length: number): void {
     this.offset += length;
@@ -64,6 +65,7 @@ export class StreamDataView {
 
   /**
    * Returns the current offset.
+   * @return Offset
    */
   public getOffset(): number {
     return this.offset;
@@ -94,7 +96,7 @@ export class StreamDataView {
   }
 
   /**
-   * Reads the next 8-bit singed integer.
+   * Reads the next 8-bit singed integer from current offset.
    */
   public getNextInt8(): number {
     const value = this.getInt8(this.offset);
@@ -103,7 +105,7 @@ export class StreamDataView {
   }
 
   /**
-   * Reads the next 8-bit unsinged integer.
+   * Reads the next 8-bit unsinged integer from curret offset.
    */
   public getNextUint8(): number {
     const value = this.getUint8(this.offset);
@@ -362,7 +364,8 @@ export class StreamDataView {
    * @param offset Buffer offset.
    * @param length Buffer length.
    */
-  public getBytes(offset: number, length: number) {
+  public getBytes(offset: number, length?: number) {
+    length = length || this.view.buffer.byteLength - this.offset;
     const bytes = new Uint8Array(length);
     for (let i = 0; i < bytes.byteLength; i++) {
       bytes[i] = this.getUint8(offset + i);
@@ -375,7 +378,6 @@ export class StreamDataView {
    * @param length Buffer length. (default: remaining length)
    */
   public getNextBytes(length?: number) {
-    length = length || this.view.buffer.byteLength - this.offset;
     const value = this.getBytes(this.offset, length);
     this.offset += length;
     return value;
@@ -489,7 +491,7 @@ export class StreamDataView {
 
   /**
    * Parses a string of bytes like '48 65 6C 6C 6F'.
-   * Also see the method 'toString'.
+   * Also see the method 'toByteString'.
    * @param str Byte string.
    */
   public fromByteString(str: string) {
