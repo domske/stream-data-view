@@ -15,6 +15,7 @@ Easy work with data bytes like a pro.
 * Use it for container files.
 * Just display a buffer in pretty print.
 * Simply convert between numbers, strings and byte arrays (buffer).
+* Generate and parse your custom binary files for import and export.
 
 ## Documentation
 
