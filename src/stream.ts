@@ -455,7 +455,7 @@ export class StreamDataView {
       bytes = new TextEncoder('ascii').encode(data);
     }
 
-    length = (typeof length === 'string') ? length : bytes.byteLength;
+    length = (typeof length === 'number') ? length : bytes.byteLength;
 
     for (let i = 0; i < length; i++) {
       this.view.setUint8(offset + i, bytes[i] || 0);
