@@ -1,4 +1,4 @@
-# Documentation `1.1.1`
+# Documentation `1.2.0`
 
 ## `class` **StreamDataView**
 
@@ -6,7 +6,7 @@
 
 | Param     | Type                   | Description                                                     |
 | --------- | ---------------------- | --------------------------------------------------------------- |
-| buffer    | `ArrayBuffer | number` | Buffer or size for a new buffer.                                |
+| buffer    | `ArrayBuffer` `number` | Buffer or size for a new buffer.                                |
 | bigEndian | `boolean`              | (optional) Use big endian for numbers. (default: little endian) |
 
 ### `static method` **fromByteString**(str)
@@ -384,7 +384,7 @@ Reads an array of bytes from the current offset.
 | untilTerminator | `boolean` | (optional) Only returns the string until zero terminator. |
 | return          | `string`  | Value                                                     |
 
-### `method` **setString**(offset, data, utf8, untilTerminator)
+### `method` **setString**(offset, data, utf8, length)
 
 Writes an array of bytes.
 
@@ -393,15 +393,17 @@ Writes an array of bytes.
 | offset | `number`  | Offset.                                         |
 | data   | `string`  | Data to write.                                  |
 | utf8   | `boolean` | (optional) Use utf-8 encoding. (default: ascii) |
+| length | `number`  | (optional) fixed length write on buffer.        |
 
-### `method` **setNextString**(data, utf8)
+### `method` **setNextString**(data, utf8, length)
 
 Writes an array of bytes to the current offset.
 
-| Param           | Type      | Description                                     |
-| ----------------| --------- | ----------------------------------------------- |
-| data            | `string`  | Data to write.                                  |
-| utf8            | `boolean` | (optional) Use utf-8 encoding. (default: ascii) |
+| Param  | Type      | Description                                     |
+| ------ | --------- | ----------------------------------------------- |
+| data   | `string`  | Data to write.                                  |
+| utf8   | `boolean` | (optional) Use utf-8 encoding. (default: ascii) |
+| length | `number`  | (optional) fixed length write on buffer.        |
 
 ### `method` **toByteString**()
 

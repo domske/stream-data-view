@@ -444,8 +444,9 @@ export class StreamDataView {
    * @param offset Buffer offset.
    * @param data Data to write.
    * @param utf8 Use utf-8. (default: ascii)
+   * @param length Optional fixed length write on buffer.
    */
-  public setString(offset: number, data: string, utf8?: boolean): number {
+  public setString(offset: number, data: string, utf8?: boolean, length?: number): number {
     let bytes: Uint8Array;
 
     if (utf8) {
@@ -454,20 +455,23 @@ export class StreamDataView {
       bytes = new TextEncoder('ascii').encode(data);
     }
 
-    for (let i = 0; i < bytes.byteLength; i++) {
+    length = (typeof length === 'string') ? length : bytes.byteLength;
+
+    for (let i = 0; i < length; i++) {
       this.view.setUint8(offset + i, bytes[i] || 0);
     }
 
-    return bytes.byteLength;
+    return length;
   }
 
   /**
    * Sets a string to the buffer.
    * @param data Data to write.
    * @param utf8 Use uff-8. (default: ascii)
+   * @param length Optional fixed length write on buffer.
    */
-  public setNextString(data: string, utf8?: boolean): void {
-    this.offset += this.setString(this.offset, data, utf8);
+  public setNextString(data: string, utf8?: boolean, length?: number): void {
+    this.offset += this.setString(this.offset, data, utf8, length);
   }
 
   /**
