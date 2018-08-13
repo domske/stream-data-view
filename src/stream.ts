@@ -455,7 +455,7 @@ export class StreamDataView {
     }
 
     for (let i = 0; i < bytes.byteLength; i++) {
-      this.view.setUint8(this.offset + i, bytes[i] || 0);
+      this.view.setUint8(offset + i, bytes[i] || 0);
     }
 
     return bytes.byteLength;
@@ -466,7 +466,7 @@ export class StreamDataView {
    * @param data Data to write.
    * @param utf8 Use uff-8. (default: ascii)
    */
-  public setNextString(data: string, length?: number, utf8?: boolean): void {
+  public setNextString(data: string, utf8?: boolean): void {
     this.offset += this.setString(this.offset, data, utf8);
   }
 

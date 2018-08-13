@@ -1,4 +1,4 @@
-# Documentation `1.1.0`
+# Documentation `1.1.1`
 
 ## `class` **StreamDataView**
 
@@ -384,7 +384,7 @@ Reads an array of bytes from the current offset.
 | untilTerminator | `boolean` | (optional) Only returns the string until zero terminator. |
 | return          | `string`  | Value                                                     |
 
-### `method` **setString**(offset, length, utf8, untilTerminator)
+### `method` **setString**(offset, data, utf8, untilTerminator)
 
 Writes an array of bytes.
 
@@ -394,14 +394,14 @@ Writes an array of bytes.
 | data   | `string`  | Data to write.                                  |
 | utf8   | `boolean` | (optional) Use utf-8 encoding. (default: ascii) |
 
-### `method` **setNextString**(length, utf8, untilTerminator)
+### `method` **setNextString**(data, utf8)
 
 Writes an array of bytes to the current offset.
 
-| Param  | Type      | Description                                     |
-| -------| --------- | ----------------------------------------------- |
-| data   | `string`  | Data to write.                                  |
-| utf8   | `boolean` | (optional) Use utf-8 encoding. (default: ascii) |
+| Param           | Type      | Description                                     |
+| ----------------| --------- | ----------------------------------------------- |
+| data            | `string`  | Data to write.                                  |
+| utf8            | `boolean` | (optional) Use utf-8 encoding. (default: ascii) |
 
 ### `method` **toByteString**()
 
