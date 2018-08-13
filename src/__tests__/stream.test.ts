@@ -20,6 +20,20 @@ test('utf-8', () => {
   expect(text).toBe('Grün');
 });
 
+test('string fixed length', () => {
+
+  let stream = new StreamDataView(12);
+
+  // Only store 'Hello '
+  stream.setNextString('Hello World', false, 6);
+
+  // Store 'Stream'
+  stream.setNextString('Stream', false, 6);
+
+  expect(stream.toTextString(false)).toBe('Hello Stream');
+  expect(stream.toByteString()).toBe('48 65 6C 6C 6F 20 53 74 72 65 61 6D');
+});
+
 test('readme - quick guide 1', () => {
   // Create a stream and write some data.
   let stream = new StreamDataView(8);
