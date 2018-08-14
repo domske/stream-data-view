@@ -36,7 +36,7 @@ export class StreamDataView {
       bytes = new TextEncoder('ascii').encode(str);
     }
 
-    let stream = new StreamDataView(bytes.length);
+    const stream = new StreamDataView(bytes.length);
     stream.setNextString(str, utf8, bytes.length);
     return stream;
   }
