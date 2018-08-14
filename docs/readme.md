@@ -1,437 +1,662 @@
-# Documentation `1.2.1`
+# API Documentation
 
-## `class` **StreamDataView**
+**Version** `1.3.0`
+## StreamDataView
 
-### **constructor**(buffer, bigEndian)
+---
 
-| Param     | Type                   | Description                                                     |
-| --------- | ---------------------- | --------------------------------------------------------------- |
-| buffer    | `ArrayBuffer` `number` | Buffer or size for a new buffer.                                |
-| bigEndian | `boolean`              | (optional) Use big endian for numbers. (default: little endian) |
+### **fromByteString** (str)
 
-### `static method` **fromByteString**(str)
-
-Creates a new instance of StreamDataView.
+Creates a new instance of StreamDataView from a string.
 e.g. from the string of toByteString()
 
-| Param  | Type             | Description                       |
-| ------ | ---------------- | --------------------------------- |
-| str    | `string`         | Byte string like '48 65 6C 6C 6F' |
-| return | `StreamDataView` | New instance.                     |
+| Param | Type | Description |
+| --- | --- | --- |
+| str | string | Byte string like '48 65 6C 6C 6F' |
 
-### `method` **getBuffer**()
+
+**Returns** `StreamDataView` New instance of StreamDataView.
+
+---
+
+### **fromTextString** (str, utf8)
+
+Creates a new instance of StreamDataView from a string.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| str | string | Text string like 'Hello' |
+| utf8 | boolean | *(optional)* Handle the string as uft-8. |
+
+
+**Returns** `StreamDataView` New instance of StreamDataView.
+
+---
+
+### ***constructor*** (buffer, bigEndian)
+
+The constructor of this class.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| buffer | ArrayBuffer , number | Array buffer. |
+| bigEndian | boolean | *(optional)* Use big endian for numbers. (default: little endian) |
+
+
+
+
+---
+
+### **getBuffer** ()
 
 Returns the array buffer of the data view.
 
-| Param  | Type          | Description                   |
-| ------ | ------------- | ----------------------------- |
-| return | `ArrayBuffer` | The buffer of this data view. |
 
-### `method` **skip**(length)
+
+**Returns** `ArrayBuffer` The buffer of this data view.
+
+---
+
+### **skip** (length)
 
 Moves the offset relative in a direction.
 
-| Param  | Type     | Description                              |
-| ------ | -------- | ---------------------------------------- |
-| length | `number` | Positive or negative number byte length. |
+| Param | Type | Description |
+| --- | --- | --- |
+| length | number | Positive or negative number byte length. |
 
-### `method` **resetOffset**()
+
+**Returns** `void`
+
+---
+
+### **resetOffset** ()
 
 Moves the offset to zero.
 
-### `method` **getOffset**()
+
+
+**Returns** `void`
+
+---
+
+### **getOffset** ()
 
 Returns the current offset.
 
-| Param  | Type     | Description |
-| ------ | -------- | ----------- |
-| return | `number` | Offset      |
 
-### `method` **setOffset**(offset)
+
+**Returns** `number` Offset
+
+---
+
+### **setOffset** (offset)
 
 Sets a new offset to an absolute position.
 
-| Param  | Type     | Description                   |
-| ------ | -------- | ----------------------------- |
-| offset | `number` | New offset (starts from zero) |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | New offset (starts from zero) |
 
-### `method` **getInt8**(offset)
+
+**Returns** `void`
+
+---
+
+### **getInt8** (offset)
 
 Reads a 8-bit singed integer.
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| return | `number` | INT8 value.    |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
 
-### `method` **getUint8**(offset)
+
+**Returns** `number` INT8 value.
+
+---
+
+### **getUint8** (offset)
 
 Reads a 8-bit unsinged integer.
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| return | `number` | UINT8 value.   |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
 
-### `method` **getNextInt8**()
+
+**Returns** `number` UINT8 value.
+
+---
+
+### **getNextInt8** ()
 
 Reads the next 8-bit singed integer from current offset.
 
-| Param  | Type     | Description |
-| ------ | -------- | ----------- |
-| return | `number` | INT8 value. |
 
-### `method` **getNextUint8**()
 
-Reads the next 8-bit unsinged integer from current offset.
+**Returns** `number` INT8 value.
 
-| Param  | Type     | Description  |
-| ------ | -------- | ------------ |
-| return | `number` | UINT8 value. |
+---
 
-### `method` **getInt16**(offset)
+### **getNextUint8** ()
+
+Reads the next 8-bit unsinged integer from curret offset.
+
+
+
+**Returns** `number` UINT8 value.
+
+---
+
+### **getInt16** (offset)
 
 Reads a 16-bit singed integer.
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| return | `number` | INT16 value.   |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
 
-### `method` **getUint16**(offset)
+
+**Returns** `number` INT16 value.
+
+---
+
+### **getUint16** (offset)
 
 Reads a 16-bit unsinged integer.
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| return | `number` | UINT16 value.  |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
 
-### `method` **getNextInt16**()
 
-Reads the next 16-bit singed integer from current offset.
+**Returns** `number` UINT16 value.
 
-| Param  | Type     | Description  |
-| ------ | -------- | ------------ |
-| return | `number` | INT16 value. |
+---
 
-### `method` **getNextUint16**()
+### **getNextInt16** ()
 
-Reads the next 16-bit unsinged integer from current offset.
+Reads the next 16-bit singed integer.
 
-| Param  | Type     | Description   |
-| ------ | -------- | ------------- |
-| return | `number` | UINT16 value. |
 
-### `method` **getInt32**(offset)
+
+**Returns** `number` INT16 value.
+
+---
+
+### **getNextUint16** ()
+
+Reads the next 16-bit unsinged integer.
+
+
+
+**Returns** `number` UINT16 value.
+
+---
+
+### **getInt32** (offset)
 
 Reads a 32-bit singed integer.
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| return | `number` | INT32 value.   |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
 
-### `method` **getUint32**(offset)
+
+**Returns** `number` INT32 value.
+
+---
+
+### **getUint32** (offset)
 
 Reads a 32-bit unsinged integer.
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| return | `number` | UINT32 value.  |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
 
-### `method` **getNextInt32**()
 
-Reads the next 32-bit singed integer from current offset.
+**Returns** `number` UINT32 value.
 
-| Param  | Type     | Description  |
-| ------ | -------- | ------------ |
-| return | `number` | INT32 value. |
+---
 
-### `method` **getNextUint32**()
+### **getNextInt32** ()
 
-Reads the next 32-bit unsinged integer from current offset.
+Reads the next 32-bit singed integer.
 
-| Param  | Type     | Description   |
-| ------ | -------- | ------------- |
-| return | `number` | UINT32 value. |
 
-### `method` **getFloat32**(offset)
+
+**Returns** `number` INT32 value.
+
+---
+
+### **getNextUint32** ()
+
+Reads the next 32-bit unsinged integer.
+
+
+
+**Returns** `number` UINT32 value.
+
+---
+
+### **getFloat32** (offset)
 
 Reads a float. (32-bit, signed)
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| return | `number` | FLOAT value.  |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
 
-### `method` **getFloat64**()
+
+**Returns** `number` FLOAT value.
+
+---
+
+### **getFloat64** (offset)
 
 Reads a double. (64-bit signed)
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| return | `number` | DOUBLE value.  |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
 
-### `method` **getNextFloat32**()
 
-Reads the next float. (32-bit, signed) from current offset.
+**Returns** `number` DOUBLE value.
 
-| Param  | Type     | Description   |
-| ------ | -------- | ------------- |
-| return | `number` | FLOAT value. |
+---
 
-### `method` **getNextFloat64**()
+### **getNextFloat32** ()
 
-Reads the next double. (32-bit, signed) from current offset.
+Reads the next float. (32-bit, signed)
 
-| Param  | Type     | Description   |
-| ------ | -------- | ------------- |
-| return | `number` | DOUBLE value. |
 
-### `method` **setInt8**(offset, value)
 
-Writes a 8-bit singed integer.
+**Returns** `number` FLOAT value.
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| value  | `number` | INT8 value.    |
+---
 
-### `method` **setUint8**(offset, value)
+### **getNextFloat64** ()
 
-Writes a 8-bit unsinged integer.
+Reads the next double. (64-bit, signed)
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| value  | `number` | UINT8 value.   |
 
-### `method` **setNextInt8**(value)
 
-Writes the next 8-bit singed integer to current offset.
+**Returns** `number` DOUBLE value.
 
-| Param  | Type     | Description |
-| ------ | -------- | ----------- |
-| value  | `number` | INT8 value. |
+---
 
-### `method` **setNextUint8**(value)
+### **setInt8** (offset, value)
 
-Writes the next 8-bit unsinged integer to current offset.
+Writes a 8-bit signed integer to the buffer.
 
-| Param  | Type     | Description  |
-| ------ | -------- | ------------ |
-| value  | `number` | UINT8 value. |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
+| value | number | Value to write. |
 
-### `method` **setInt16**(offset, value)
 
-Writes a 16-bit singed integer.
+**Returns** `void`
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| value  | `number` | INT16 value.   |
+---
 
-### `method` **setUint16**(offset, value)
+### **setUint8** (offset, value)
 
-Writes a 16-bit unsinged integer.
+Writes a 8-bit unsigned integer to the buffer.
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| value  | `number` | UINT16 value.  |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
+| value | number | Value to write. |
 
-### `method` **setNextInt16**(value)
 
-Writes the next 16-bit singed integer to current offset.
+**Returns** `void`
 
-| Param  | Type     | Description  |
-| ------ | -------- | ------------ |
-| value  | `number` | INT16 value. |
+---
 
-### `method` **setNextUint16**(value)
+### **setNextInt8** (value)
 
-Writes the next 16-bit unsinged integer to current offset.
+Writes the next 8-bit signed integer to the buffer.
 
-| Param  | Type     | Description   |
-| ------ | -------- | ------------- |
-| value  | `number` | UINT16 value. |
+| Param | Type | Description |
+| --- | --- | --- |
+| value | number | Value to write. |
 
-### `method` **setInt32**(offset, value)
 
-Writes a 32-bit singed integer.
+**Returns** `void`
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| value  | `number` | INT32 value.   |
+---
 
-### `method` **setUint32**(offset, value)
+### **setNextUint8** (value)
 
-Writes a 32-bit unsinged integer.
+Writes the next 8-bit unsigned integer to the buffer.
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| value  | `number` | UINT32 value.  |
+| Param | Type | Description |
+| --- | --- | --- |
+| value | number | Value to write. |
 
-### `method` **setNextInt32**(value)
 
-Writes the next 32-bit singed integer to current offset.
+**Returns** `void`
 
-| Param  | Type     | Description  |
-| ------ | -------- | ------------ |
-| value  | `number` | INT32 value. |
+---
 
-### `method` **setNextUint32**(value)
+### **setInt16** (offset, value)
 
-Writes the next 32-bit unsinged integer to current offset.
+Writes a 16-bit signed integer to the buffer.
 
-| Param  | Type     | Description   |
-| ------ | -------- | ------------- |
-| value  | `number` | UINT32 value. |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
+| value | number | Value to write. |
 
-### `method` **setFloat32**(offset, value)
 
-Writes a float. (32-bit, signed)
+**Returns** `void`
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| value  | `number` | FLOAT value.  |
+---
 
-### `method` **setFloat64**(, value)
+### **setUint16** (offset, value)
 
-Writes a double. (64-bit signed)
+Writes a 16-bit unsigned integer to the buffer.
 
-| Param  | Type     | Description    |
-| ------ | -------- | -------------- |
-| offset | `number` | Buffer offset. |
-| value  | `number` | DOUBLE value.  |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
+| value | number | Value to write. |
 
-### `method` **setNextFloat32**(value)
 
-Writes the next float. (32-bit, signed) to current offset.
+**Returns** `void`
 
-| Param  | Type     | Description   |
-| ------ | -------- | ------------- |
-| value  | `number` | FLOAT value. |
+---
 
-### `method` **setNextFloat64**(value)
+### **setNextInt16** (value)
 
-Writes the next double. (32-bit, signed) to current offset.
+Writes the next 16-bit signed integer to the buffer.
 
-| Param  | Type     | Description   |
-| ------ | -------- | ------------- |
-| value  | `number` | DOUBLE value. |
+| Param | Type | Description |
+| --- | --- | --- |
+| value | number | Value to write. |
 
-### `method` **getBytes**(offset, length)
+
+**Returns** `void`
+
+---
+
+### **setNextUint16** (value)
+
+Writes the next 16-bit unsigned integer to the buffer.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | number | Value to write. |
+
+
+**Returns** `void`
+
+---
+
+### **setInt32** (offset, value)
+
+Writes a 32-bit signed integer to the buffer.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
+| value | number | Value to write. |
+
+
+**Returns** `void`
+
+---
+
+### **setUint32** (offset, value)
+
+Writes a 32-bit unsigned integer to the buffer.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
+| value | number | Value to write. |
+
+
+**Returns** `void`
+
+---
+
+### **setNextInt32** (value)
+
+Writes the next 32-bit signed integer to the buffer.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | number | Value to write. |
+
+
+**Returns** `void`
+
+---
+
+### **setNextUint32** (value)
+
+Writes the next 32-bit unsigned integer to the buffer.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | number | Value to write. |
+
+
+**Returns** `void`
+
+---
+
+### **setFloat32** (offset, value)
+
+Writes a float to the buffer. (32-bit, signed)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
+| value | number | Value to write. |
+
+
+**Returns** `void`
+
+---
+
+### **setFloat64** (offset, value)
+
+Writes a double to the buffer. (64-bit, signed)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
+| value | number | Value to write. |
+
+
+**Returns** `void`
+
+---
+
+### **setNextFloat32** (value)
+
+Writes the next float to the buffer. (32-bit, signed)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | number | Value to write. |
+
+
+**Returns** `void`
+
+---
+
+### **setNextFloat64** (value)
+
+Writes the next double to the buffer. (64-bit, signed)
+
+| Param | Type | Description |
+| --- | --- | --- |
+| value | number | Value to write. |
+
+
+**Returns** `void`
+
+---
+
+### **getBytes** (offset, length)
 
 Reads an array of bytes.
 
-| Param  | Type     | Description                            |
-| ------ | -------- | -------------------------------------- |
-| offset | `number` | Offset.                                |
-| length | `number` | (optional) Length or remaining length. |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
+| length | number | *(optional)* Buffer length. |
 
-### `method` **getNextBytes**(length)
 
-Reads the next array of bytes from current offset.
+**Returns** `Uint8Array` Byte array like [42, 12, 255, 0]
 
-| Param  | Type     | Description                            |
-| ------ | -------- | -------------------------------------- |
-| length | `number` | (optional) Length or remaining length. |
+---
 
-### `method` **setBytes**(offset, data)
+### **getNextBytes** (length)
 
-Writes an array of bytes.
+Reads the next array of bytes.
 
-| Param  | Type         | Description          |
-| ------ | ------------ | -------------------- |
-| offset | `number`     | Offset.              |
-| data   | `Uint8Array` | Byte array to write. |
+| Param | Type | Description |
+| --- | --- | --- |
+| length | number | *(optional)* Buffer length. (default: remaining length) |
 
-### `method` **setNextBytes**(length)
 
-Writes an array of bytes to current offset.
+**Returns** `Uint8Array` Byte array like [42, 12, 255, 0]
 
-| Param  | Type         | Description          |
-| ------ | ------------ | -------------------- |
-| data   | `Uint8Array` | Byte array to write. |
+---
 
-### `method` **getString**(offset, length, utf8, untilTerminator)
+### **setBytes** (offset, data)
 
-Reads an array of bytes.
+Writes a byte array to the buffer.
 
-| Param           | Type      | Description                                               |
-| --------------- | --------- | --------------------------------------------------------- |
-| offset          | `number`  | Offset.                                                   |
-| length          | `number`  | Length.                                                   |
-| utf8            | `number`  | (optional) Use utf-8 encoding. (default: ascii)           |
-| untilTerminator | `boolean` | (optional) Only returns the string until zero terminator. |
-| return          | `string`  | Value                                                     |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
+| data | Uint8Array | Byte array to write. |
 
-### `method` **getNextString**(length, utf8, untilTerminator)
 
-Reads an array of bytes from the current offset.
+**Returns** `void`
 
-| Param           | Type      | Description                                               |
-| --------------- | --------- | --------------------------------------------------------- |
-| length          | `number`  | Length.                                                   |
-| utf8            | `number`  | (optional) Use utf-8 encoding. (default: ascii)           |
-| untilTerminator | `boolean` | (optional) Only returns the string until zero terminator. |
-| return          | `string`  | Value                                                     |
+---
 
-### `method` **setString**(offset, data, utf8, length)
+### **setNextBytes** (data)
 
-Writes an array of bytes.
+Writes the next byte array to the buffer.
 
-| Param  | Type      | Description                                     |
-| ------ | --------- | ----------------------------------------------- |
-| offset | `number`  | Offset.                                         |
-| data   | `string`  | Data to write.                                  |
-| utf8   | `boolean` | (optional) Use utf-8 encoding. (default: ascii) |
-| length | `number`  | (optional) fixed length write on buffer.        |
+| Param | Type | Description |
+| --- | --- | --- |
+| data | Uint8Array | Byte array to write. |
 
-### `method` **setNextString**(data, utf8, length)
 
-Writes an array of bytes to the current offset.
+**Returns** `void`
 
-| Param  | Type      | Description                                     |
-| ------ | --------- | ----------------------------------------------- |
-| data   | `string`  | Data to write.                                  |
-| utf8   | `boolean` | (optional) Use utf-8 encoding. (default: ascii) |
-| length | `number`  | (optional) fixed length write on buffer.        |
+---
 
-### `method` **toByteString**()
+### **getString** (offset, length, utf8, untilTerminator?)
 
-Converts the buffer to a pretty print byte string. Like '48 65 6C 6C 6F'
+Reads a string from the buffer.
 
-| Param  | Type      | Description                |
-| -------| --------- | -------------------------- |
-| return | `string`  | The buffer as byte string. |
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
+| length | number | Buffer length. |
+| utf8 | boolean | *(optional)* Use utf-8 encoding. (default: ascii) |
+| untilTerminator | boolean | *(optional)* Only returns the string until zero terminator. |
 
-### `method` **toTextString**()
+
+**Returns** `string` String as utf8 or ascii.
+
+---
+
+### **getNextString** (length, utf8, untilTerminator?)
+
+Returns a string from the buffer.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| length | number | Buffer length. |
+| utf8 | boolean | *(optional)* Use utf-8 encoding. (default: ascii) |
+| untilTerminator | boolean | *(optional)* Only returns the string until zero terminator. Does not affect the offset shifting. |
+
+
+**Returns** `string` String as utf8 or ascii.
+
+---
+
+### **setString** (offset, data, utf8, length?)
+
+Sets a string to the buffer.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| offset | number | Buffer offset. |
+| data | string | Data to write. |
+| utf8 | boolean | *(optional)* Use utf-8. (default: ascii) |
+| length | number | *(optional)* Optional fixed length write on buffer. |
+
+
+**Returns** `number` The the length in byte of the string. Useful for dynamic length.
+
+---
+
+### **setNextString** (data, utf8, length?)
+
+Sets a string to the buffer.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| data | string | Data to write. |
+| utf8 | boolean | *(optional)* Use uff-8. (default: ascii) |
+| length | number | *(optional)* Optional fixed length write on buffer. |
+
+
+**Returns** `void`
+
+---
+
+### **toByteString** ()
+
+Converts the buffer to a pretty print byte string.
+
+
+
+**Returns** `string` Byte string like '48 65 6C 6C 6F'.
+
+---
+
+### **toTextString** (utf8)
 
 Converts the buffer to a text string.
 
-| Param  | Type      | Description                               |
-| ------ | --------- | ----------------------------------------- |
-| utf8   | `boolean` | Handle it as UTF8 string otherwise ASCII. |
-| return | `string`  | Text value.                               |
+| Param | Type | Description |
+| --- | --- | --- |
+| utf8 | boolean | *(optional)* Handle it as UTF8 string otherwise ASCII. |
 
 
-### `method` **fromByteString**(str)
+**Returns** `string` Text string as utf8 or ascii.
+
+---
+
+### **fromByteString** (str)
 
 Parses a string of bytes like '48 65 6C 6C 6F'.
 Also see the method 'toByteString'.
 
-| Param | Type     | Description  |
-| ----- | -------- | ------------ |
-| str   | `string` | Byte string. |
+| Param | Type | Description |
+| --- | --- | --- |
+| str | string | Byte string. |
+
+
+**Returns** `void`
+
+
 
 ---
+*This file was generated automatically.*
 
-*Errors and omissions excepted*
+*(c) 2018 Dominik Geng*

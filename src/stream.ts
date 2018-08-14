@@ -10,14 +10,34 @@ import { TextEncoder } from './text-encoding/text-encoder';
 export class StreamDataView {
 
   /**
-   * Creates a new instance of StreamDataView.
+   * Creates a new instance of StreamDataView from a string.
    * e.g. from the string of toByteString()
    * @param str Byte string like '48 65 6C 6C 6F'
+   * @return New instance of StreamDataView.
    */
   public static fromByteString(str: string): StreamDataView {
     const length = str.split(' ').length;
     const stream = new StreamDataView(length);
     stream.fromByteString(str);
+    return stream;
+  }
+
+  /**
+   * Creates a new instance of StreamDataView from a string.
+   * @param str Text string like 'Hello'
+   * @param utf8 Handle the string as uft-8.
+   * @return New instance of StreamDataView.
+   */
+  public static fromTextString(str: string, utf8?: boolean): StreamDataView {
+    let bytes: Uint8Array;
+    if (utf8) {
+      bytes = new TextEncoder('utf-8').encode(str);
+    } else {
+      bytes = new TextEncoder('ascii').encode(str);
+    }
+
+    let stream = new StreamDataView(bytes.length);
+    stream.setNextString(str, utf8, bytes.length);
     return stream;
   }
 
@@ -82,6 +102,7 @@ export class StreamDataView {
   /**
    * Reads a 8-bit singed integer.
    * @param offset Buffer offset.
+   * @return INT8 value.
    */
   public getInt8(offset: number): number {
     return this.view.getInt8(offset);
@@ -90,6 +111,7 @@ export class StreamDataView {
   /**
    * Reads a 8-bit unsinged integer.
    * @param offset Buffer offset.
+   * @return UINT8 value.
    */
   public getUint8(offset: number): number {
     return this.view.getUint8(offset);
@@ -97,6 +119,7 @@ export class StreamDataView {
 
   /**
    * Reads the next 8-bit singed integer from current offset.
+   * @return INT8 value.
    */
   public getNextInt8(): number {
     const value = this.getInt8(this.offset);
@@ -106,6 +129,7 @@ export class StreamDataView {
 
   /**
    * Reads the next 8-bit unsinged integer from curret offset.
+   * @return UINT8 value.
    */
   public getNextUint8(): number {
     const value = this.getUint8(this.offset);
@@ -116,6 +140,7 @@ export class StreamDataView {
   /**
    * Reads a 16-bit singed integer.
    * @param offset Buffer offset.
+   * @return INT16 value.
    */
   public getInt16(offset: number): number {
     return this.view.getInt16(offset, this.littleEndian);
@@ -124,6 +149,7 @@ export class StreamDataView {
   /**
    * Reads a 16-bit unsinged integer.
    * @param offset Buffer offset.
+   * @return UINT16 value.
    */
   public getUint16(offset: number): number {
     return this.view.getUint16(offset, this.littleEndian);
@@ -131,6 +157,7 @@ export class StreamDataView {
 
   /**
    * Reads the next 16-bit singed integer.
+   * @return INT16 value.
    */
   public getNextInt16(): number {
     const value = this.getInt16(this.offset);
@@ -140,6 +167,7 @@ export class StreamDataView {
 
   /**
    * Reads the next 16-bit unsinged integer.
+   * @return UINT16 value.
    */
   public getNextUint16(): number {
     const value = this.getUint16(this.offset);
@@ -150,6 +178,7 @@ export class StreamDataView {
   /**
    * Reads a 32-bit singed integer.
    * @param offset Buffer offset.
+   * @return INT32 value.
    */
   public getInt32(offset: number): number {
     return this.view.getInt32(offset, this.littleEndian);
@@ -158,6 +187,7 @@ export class StreamDataView {
   /**
    * Reads a 32-bit unsinged integer.
    * @param offset Buffer offset.
+   * @return UINT32 value.
    */
   public getUint32(offset: number): number {
     return this.view.getUint32(offset, this.littleEndian);
@@ -165,6 +195,7 @@ export class StreamDataView {
 
   /**
    * Reads the next 32-bit singed integer.
+   * @return INT32 value.
    */
   public getNextInt32(): number {
     const value = this.getInt32(this.offset);
@@ -174,6 +205,7 @@ export class StreamDataView {
 
   /**
    * Reads the next 32-bit unsinged integer.
+   * @return UINT32 value.
    */
   public getNextUint32(): number {
     const value = this.getUint32(this.offset);
@@ -184,6 +216,7 @@ export class StreamDataView {
   /**
    * Reads a float. (32-bit, signed)
    * @param offset Buffer offset.
+   * @return FLOAT value.
    */
   public getFloat32(offset: number): number {
     return this.view.getFloat32(offset, this.littleEndian);
@@ -192,6 +225,7 @@ export class StreamDataView {
   /**
    * Reads a double. (64-bit signed)
    * @param offset Buffer offset.
+   * @return DOUBLE value.
    */
   public getFloat64(offset: number): number {
     return this.view.getFloat64(offset, this.littleEndian);
@@ -199,6 +233,7 @@ export class StreamDataView {
 
   /**
    * Reads the next float. (32-bit, signed)
+   * @return FLOAT value.
    */
   public getNextFloat32(): number {
     const value = this.getFloat32(this.offset);
@@ -208,6 +243,7 @@ export class StreamDataView {
 
   /**
    * Reads the next double. (64-bit, signed)
+   * @return DOUBLE value.
    */
   public getNextFloat64(): number {
     const value = this.getFloat64(this.offset);
@@ -363,8 +399,9 @@ export class StreamDataView {
    * Reads an array of bytes.
    * @param offset Buffer offset.
    * @param length Buffer length.
+   * @return Byte array like [42, 12, 255, 0]
    */
-  public getBytes(offset: number, length?: number) {
+  public getBytes(offset: number, length?: number): Uint8Array {
     length = length || this.view.buffer.byteLength - this.offset;
     const bytes = new Uint8Array(length);
     for (let i = 0; i < bytes.byteLength; i++) {
@@ -376,8 +413,9 @@ export class StreamDataView {
   /**
    * Reads the next array of bytes.
    * @param length Buffer length. (default: remaining length)
+   * @return Byte array like [42, 12, 255, 0]
    */
-  public getNextBytes(length?: number) {
+  public getNextBytes(length?: number): Uint8Array {
     const value = this.getBytes(this.offset, length);
     this.offset += length;
     return value;
@@ -388,7 +426,7 @@ export class StreamDataView {
    * @param offset Buffer offset.
    * @param data Byte array to write.
    */
-  public setBytes(offset: number, data: Uint8Array) {
+  public setBytes(offset: number, data: Uint8Array): void {
     for (let i = 0; i < data.byteLength; i++) {
       this.setUint8(offset + i, data[i]);
     }
@@ -398,7 +436,7 @@ export class StreamDataView {
    * Writes the next byte array to the buffer.
    * @param data Byte array to write.
    */
-  public setNextBytes(data: Uint8Array) {
+  public setNextBytes(data: Uint8Array): void {
     this.setBytes(this.offset, data);
     this.offset += data.byteLength;
   }
@@ -409,6 +447,7 @@ export class StreamDataView {
    * @param length Buffer length.
    * @param utf8 Use utf-8 encoding. (default: ascii)
    * @param untilTerminator Only returns the string until zero terminator.
+   * @return String as utf8 or ascii.
    */
   public getString(offset: number, length: number, utf8?: boolean, untilTerminator?: boolean): string {
     let bytes = this.getBytes(offset, length);
@@ -432,6 +471,7 @@ export class StreamDataView {
    * @param length Buffer length.
    * @param utf8 Use utf-8 encoding. (default: ascii)
    * @param untilTerminator Only returns the string until zero terminator. Does not affect the offset shifting.
+   * @return String as utf8 or ascii.
    */
   public getNextString(length: number, utf8?: boolean, untilTerminator?: boolean): string {
     const value = this.getString(this.offset, length, utf8, untilTerminator);
@@ -445,6 +485,7 @@ export class StreamDataView {
    * @param data Data to write.
    * @param utf8 Use utf-8. (default: ascii)
    * @param length Optional fixed length write on buffer.
+   * @return The the length in byte of the string. Useful for dynamic length.
    */
   public setString(offset: number, data: string, utf8?: boolean, length?: number): number {
     let bytes: Uint8Array;
@@ -476,9 +517,9 @@ export class StreamDataView {
 
   /**
    * Converts the buffer to a pretty print byte string.
-   * Like '48 65 6C 6C 6F'
+   * @return Byte string like '48 65 6C 6C 6F'.
    */
-  public toByteString() {
+  public toByteString(): string {
     return Array.from(new Uint8Array(this.getBuffer()))
       .map(b => ('00' + b.toString(16)).slice(-2))
       .join(' ')
@@ -488,8 +529,9 @@ export class StreamDataView {
   /**
    * Converts the buffer to a text string.
    * @param utf8 Handle it as UTF8 string otherwise ASCII.
+   * @return Text string as utf8 or ascii.
    */
-  public toTextString(utf8?: boolean) {
+  public toTextString(utf8?: boolean): string {
     return this.getString(0, this.view.byteLength, utf8);
   }
 
@@ -498,7 +540,7 @@ export class StreamDataView {
    * Also see the method 'toByteString'.
    * @param str Byte string.
    */
-  public fromByteString(str: string) {
+  public fromByteString(str: string): void {
     const byteArray = str.split(' ');
     const buffer = new ArrayBuffer(byteArray.length);
     this.view = new DataView(buffer);
