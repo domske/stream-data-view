@@ -557,7 +557,7 @@ Writes the next byte array to the buffer.
 
 ---
 
-### **getString** (offset, length, utf8, untilTerminator?)
+### **getString** (offset, length, utf8, untilTerminator)
 
 Reads a string from the buffer.
 
@@ -573,7 +573,7 @@ Reads a string from the buffer.
 
 ---
 
-### **getNextString** (length, utf8, untilTerminator?)
+### **getNextString** (length, utf8, untilTerminator)
 
 Returns a string from the buffer.
 
@@ -588,7 +588,7 @@ Returns a string from the buffer.
 
 ---
 
-### **setString** (offset, data, utf8, length?)
+### **setString** (offset, data, utf8, length)
 
 Sets a string to the buffer.
 
@@ -604,7 +604,7 @@ Sets a string to the buffer.
 
 ---
 
-### **setNextString** (data, utf8, length?)
+### **setNextString** (data, utf8, length)
 
 Sets a string to the buffer.
 
