@@ -3,6 +3,10 @@
 **Version** `1.3.0`
 ## StreamDataView
 
+[Github](https://github.com/domske/stream-data-view)
+
+[NPM Package](https://www.npmjs.com/package/stream-data-view)
+
 ---
 
 ### **fromByteString** (str)
