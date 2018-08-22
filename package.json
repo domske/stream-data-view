@@ -4,7 +4,10 @@
   "description": "Easy work with data bytes like a pro.",
   "keywords": [
     "stream",
-    "buffer"
+    "buffer",
+    "data",
+    "view",
+    "byte"
   ],
   "author": "Dominik-Andreas Geng",
   "license": "Apache-2.0",
