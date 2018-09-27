@@ -9,7 +9,6 @@ import { TextDecoder } from './text-encoding/text-decoder';
 import { TextEncoder } from './text-encoding/text-encoder';
 
 export class StreamDataView {
-
   /**
    * Creates a new instance of StreamDataView from a string.
    * e.g. from the string of toByteString()
@@ -418,7 +417,7 @@ export class StreamDataView {
    */
   public getNextBytes(length?: number): Uint8Array {
     const value = this.getBytes(this.offset, length);
-    this.offset += length;
+    this.offset += length || 0;
     return value;
   }
 
@@ -497,7 +496,7 @@ export class StreamDataView {
       bytes = new TextEncoder('ascii').encode(data);
     }
 
-    length = (typeof length === 'number') ? length : bytes.byteLength;
+    length = typeof length === 'number' ? length : bytes.byteLength;
 
     for (let i = 0; i < length; i++) {
       this.view.setUint8(offset + i, bytes[i] || 0);

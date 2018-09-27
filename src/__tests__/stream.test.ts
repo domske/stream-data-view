@@ -21,7 +21,6 @@ test('utf-8', () => {
 });
 
 test('string fixed length', () => {
-
   let stream = new StreamDataView(12);
 
   // Only store 'Hello '

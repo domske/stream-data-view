@@ -1,13 +1,15 @@
 {
   "name": "stream-data-view",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Easy work with data bytes like a pro.",
   "keywords": [
     "stream",
     "buffer",
     "data",
     "view",
-    "byte"
+    "byte",
+    "node",
+    "browser"
   ],
   "author": "Dominik-Andreas Geng",
   "license": "Apache-2.0",

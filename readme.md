@@ -1,6 +1,7 @@
 # StreamDataView
 
 Easy work with data bytes like a pro.
+For NodeJS and Browser.
 
 ## Features
 
@@ -26,7 +27,7 @@ I recommend to use TypeScript. This library has a documented declaration file.
 ### Installation
 
 ```bash
-npm i -S stream-data-view
+npm i stream-data-view
 ```
 
 ### Quick Guide
@@ -51,6 +52,15 @@ console.log('UINT8 ', read.getNextUint8());
 ```js
 // Prints 'Awesome' to the browser console.
 console.log(StreamDataView.fromByteString('41 77 65 73 6F 6D 65').toTextString());
+```
+
+In NodeJS e.g.
+
+```js
+const StreamDataView = require('stream-data-view').StreamDataView;
+const stream = new StreamDataView(4);
+stream.setNextUint32(0x12345678);
+console.log(stream.toByteString());
 ```
 
 ## Dependencies

@@ -1,6 +1,6 @@
 # API Documentation
 
-**Version** `1.3.0`
+**Version** `1.4.0`
 ## StreamDataView
 
 [Github](https://github.com/domske/stream-data-view)
