@@ -1,12 +1,13 @@
-import { TextDecoder } from './text-encoding/text-decoder';
-import { TextEncoder } from './text-encoding/text-encoder';
-
 /**
  * Stream Date View
  * @author Dominik Geng
  * @copyright 2018 Dominik Geng
  * @license Apache-2.0
  */
+
+import { TextDecoder } from './text-encoding/text-decoder';
+import { TextEncoder } from './text-encoding/text-encoder';
+
 export class StreamDataView {
 
   /**

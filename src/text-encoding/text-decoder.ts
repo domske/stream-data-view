@@ -1,5 +1,5 @@
 /**
- * Simple polyfills for TextEncoder and TextDecoder.
+ * Simple polyfills for TextDecoder.
  * @author Dominik Geng
  * @copyright 2018 Dominik Geng
  * @license Apache-2.0
