@@ -1,10 +1,3 @@
-/**
- * Simple polyfills for TextEncoder.
- * @author Dominik Geng
- * @copyright 2018 Dominik Geng
- * @license Apache-2.0
- */
-
 export class TextEncoder {
   private encoding: string;
 

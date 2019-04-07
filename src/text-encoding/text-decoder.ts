@@ -1,10 +1,3 @@
-/**
- * Simple polyfills for TextDecoder.
- * @author Dominik Geng
- * @copyright 2018 Dominik Geng
- * @license Apache-2.0
- */
-
 export class TextDecoder {
   private encoding: string;
 
@@ -13,7 +6,8 @@ export class TextDecoder {
   }
 
   public decode(data: Uint8Array) {
-    const str = String.fromCharCode.apply(null, data);
+    const str = String.fromCharCode.apply(null, Array.from(data));
+
     if (this.encoding === 'utf-8') {
       return decodeURIComponent(escape(str));
     }

@@ -6,24 +6,24 @@ module.exports = {
   entry: './src/index.ts',
   mode: 'production',
   module: {
-    rules: [{
-      test: /\.tsx?$/,
-      use: 'ts-loader',
-      exclude: /node_modules/
-    }]
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js'],
   },
-  plugins: [
-    new CleanWebpackPlugin(['dist'])
-  ],
+  plugins: [new CleanWebpackPlugin()],
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
     libraryTarget: 'umd',
     umdNamedDefine: true,
     // library: 'domske',
-    globalObject: 'this'
-  }
+    globalObject: 'this',
+  },
 };
