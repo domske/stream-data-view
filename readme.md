@@ -3,20 +3,24 @@
 Easy work with data bytes like a pro.
 For NodeJS and Browser.
 
+A well tested and documented library for byte handling.
+Written in TypeScript, compiled with declarations types.
+The documentation also works great with JavaScript.
+
 ## Features
 
-* View array buffer.
-* Convert data types. (signed, unsigned, strings, utf-8)
-* Read / write in a stream without worring about the byte offset.
+- View array buffer.
+- Convert data types. (signed, unsigned, strings, utf-8)
+- Read / write in a stream without worring about the byte offset.
 
 ## Use Case
 
-* Read and parse binary files.
-* Work with communication protocols like CAN.
-* Use it for container files.
-* Just display a buffer in pretty print.
-* Simply convert between numbers, strings and byte arrays (buffer).
-* Generate and parse your custom binary files for import and export.
+- Read and parse binary files.
+- Work with communication protocols like CAN.
+- Use it for container files.
+- Just display a buffer in pretty print.
+- Simply convert between numbers, strings and byte arrays (buffer).
+- Generate and parse your custom binary files for import and export.
 
 ## Documentation
 
@@ -63,6 +67,41 @@ stream.setNextUint32(0x12345678);
 console.log(stream.toByteString());
 ```
 
+You can also use a dynamic length of StreamDataView, just omit the argument.
+
+```js
+const stream = new StreamDataView();
+stream.setNextString('Hello');
+stream.setNextString(' ');
+stream.setNextString('World');
+// Buffer length is now: 11 byte.
+console.log(stream.getBuffer());
+```
+
+You can also resize manually.
+
+```js
+const stream = new StreamDataView(1);
+stream.setNextUint8(0x4c);
+// Stream buffer length is: 1 byte "L"
+stream.resize(3);
+stream.setNextUint8(0x4f);
+stream.setNextUint8(0x4c);
+// Stream buffer length is: 3 byte "LOL"
+console.log(stream.toTextString());
+```
+
+Crop buffer by offset position.
+
+```js
+const stream = new StreamDataView(42);
+stream.setNextString('Hello World');
+// Stream buffer length is: 42 "Hello World..."
+stream.crop();
+// Stream buffer length is: 11 "Hello World"
+console.log(stream.toTextString());
+```
+
 ## Dependencies
 
 Just JavaScript. But expected ES6 (ES2015). Your browser should support DataView.
@@ -102,9 +141,6 @@ Run unit tests.
 ```bash
 npm run test
 ```
-
-
-
 
 ## License
 

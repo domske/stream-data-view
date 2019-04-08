@@ -3,25 +3,25 @@ import { StreamDataView } from '../stream';
 // TODO Complete the tests / test more.
 
 test('create stream with length', () => {
-  let stream = new StreamDataView(4);
+  const stream = new StreamDataView(4);
   expect(stream.getBuffer().byteLength).toBe(4);
 });
 
 test('create stream with buffer', () => {
-  let buffer = new ArrayBuffer(4);
-  let stream = new StreamDataView(buffer);
+  const buffer = new ArrayBuffer(4);
+  const stream = new StreamDataView(buffer);
   expect(stream.getBuffer().byteLength).toBe(4);
 });
 
 test('utf-8', () => {
-  let stream = StreamDataView.fromByteString('47 72 C3 BC 6E');
-  let text = stream.toTextString(true);
+  const stream = StreamDataView.fromByteString('47 72 C3 BC 6E');
+  const text = stream.toTextString(true);
 
   expect(text).toBe('Grün');
 });
 
 test('string fixed length', () => {
-  let stream = new StreamDataView(12);
+  const stream = new StreamDataView(12);
 
   // Only store 'Hello '
   stream.setNextString('Hello World', false, 6);
@@ -35,7 +35,7 @@ test('string fixed length', () => {
 
 test('readme - quick guide 1', () => {
   // Create a stream and write some data.
-  let stream = new StreamDataView(8);
+  const stream = new StreamDataView(8);
   stream.setNextInt32(123456);
   stream.setNextUint8(42);
 
@@ -43,16 +43,49 @@ test('readme - quick guide 1', () => {
   expect(stream.toByteString()).toBe('40 E2 01 00 2A 00 00 00');
 
   // Read any buffer.
-  let buffer = stream.getBuffer();
-  let read = new StreamDataView(buffer);
+  const buffer = stream.getBuffer();
+  const read = new StreamDataView(buffer);
 
   expect(read.getNextInt32()).toBe(123456);
   expect(read.getNextUint8()).toBe(42);
 });
 
 test('readme - quick guide 2', () => {
-  let stream = StreamDataView.fromByteString('41 77 65 73 6F 6D 65');
-  let text = stream.toTextString();
+  const stream = StreamDataView.fromByteString('41 77 65 73 6F 6D 65');
+  const text = stream.toTextString();
 
   expect(text).toBe('Awesome');
+});
+
+test('dynamic length', () => {
+  const stream = new StreamDataView();
+  stream.setNextString('Hello');
+  stream.setNextString(' ');
+  stream.setNextString('World');
+
+  const buffer = stream.getBuffer();
+  const text = stream.toTextString();
+
+  expect(buffer.byteLength).toBe(11);
+  expect(text).toBe('Hello World');
+});
+
+test('resize', () => {
+  const stream = new StreamDataView(1);
+  stream.setNextUint8(0x4c);
+  expect(stream.getBuffer().byteLength).toBe(1);
+  stream.resize(3);
+  stream.setNextUint8(0x4f);
+  stream.setNextUint8(0x4c);
+  expect(stream.getBuffer().byteLength).toBe(3);
+  expect(stream.toTextString()).toBe('LOL');
+});
+
+test('crop', () => {
+  const stream = new StreamDataView(42);
+  stream.setNextString('Hello World');
+  expect(stream.getBuffer().byteLength).toBe(42);
+  stream.crop();
+  expect(stream.getBuffer().byteLength).toBe(11);
+  expect(stream.toTextString()).toBe('Hello World');
 });

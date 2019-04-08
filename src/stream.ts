@@ -7,6 +7,7 @@
 
 import { TextDecoder } from './text-encoding/text-decoder';
 import { TextEncoder } from './text-encoding/text-encoder';
+import { arrayBufferTransfer } from './helper/buffer';
 
 export class StreamDataView {
   /**
@@ -44,20 +45,47 @@ export class StreamDataView {
   private offset: number;
   private view: DataView;
   private littleEndian: boolean;
+  private autoResize: boolean;
 
   /**
    * A buffer walker.
    * @param buffer Array buffer.
    * @param bigEndian Use big endian for numbers. (default: little endian)
    */
-  constructor(buffer: ArrayBuffer | number, bigEndian?: boolean) {
+  constructor(buffer?: ArrayBuffer | number, bigEndian?: boolean) {
     this.offset = 0;
+    this.autoResize = false;
+
+    if (typeof buffer === 'undefined') {
+      buffer = 0;
+      this.autoResize = true;
+    }
+
     if (typeof buffer === 'number') {
       buffer = new ArrayBuffer(buffer);
     }
 
     this.view = new DataView(buffer);
     this.littleEndian = !bigEndian;
+  }
+
+  /**
+   * Resize the buffer size.
+   * NOTE: It creates a new buffer.
+   * @param length New length of stream.
+   */
+  public resize(length: number): void {
+    const newBuffer = arrayBufferTransfer(this.getBuffer(), length);
+    this.view = new DataView(newBuffer);
+  }
+
+  /**
+   * Crops the stream at its current offset.
+   * e.g. You have a stream of 10 bytes but only 4 bytes used. (offset at 4).
+   * This method uses the integrated resize-method.
+   */
+  public crop(): void {
+    this.resize(this.getOffset());
   }
 
   /**
@@ -257,6 +285,7 @@ export class StreamDataView {
    * @param value Value to write.
    */
   public setInt8(offset: number, value: number): void {
+    this.handleAutoResize(offset, 1);
     this.view.setInt8(offset, value);
   }
 
@@ -266,6 +295,7 @@ export class StreamDataView {
    * @param value Value to write.
    */
   public setUint8(offset: number, value: number): void {
+    this.handleAutoResize(offset, 1);
     this.view.setUint8(offset, value);
   }
 
@@ -293,6 +323,7 @@ export class StreamDataView {
    * @param value Value to write.
    */
   public setInt16(offset: number, value: number): void {
+    this.handleAutoResize(offset, 2);
     this.view.setInt16(offset, value, this.littleEndian);
   }
 
@@ -302,6 +333,7 @@ export class StreamDataView {
    * @param value Value to write.
    */
   public setUint16(offset: number, value: number): void {
+    this.handleAutoResize(offset, 2);
     this.view.setUint16(offset, value, this.littleEndian);
   }
 
@@ -329,6 +361,7 @@ export class StreamDataView {
    * @param value Value to write.
    */
   public setInt32(offset: number, value: number): void {
+    this.handleAutoResize(offset, 4);
     this.view.setInt32(offset, value, this.littleEndian);
   }
 
@@ -338,6 +371,7 @@ export class StreamDataView {
    * @param value Value to write.
    */
   public setUint32(offset: number, value: number): void {
+    this.handleAutoResize(offset, 4);
     this.view.setUint32(offset, value, this.littleEndian);
   }
 
@@ -365,6 +399,7 @@ export class StreamDataView {
    * @param value Value to write.
    */
   public setFloat32(offset: number, value: number): void {
+    this.handleAutoResize(offset, 8);
     this.view.setFloat32(offset, value, this.littleEndian);
   }
 
@@ -374,6 +409,7 @@ export class StreamDataView {
    * @param value Value to write.
    */
   public setFloat64(offset: number, value: number): void {
+    this.handleAutoResize(offset, 8);
     this.view.setFloat64(offset, value, this.littleEndian);
   }
 
@@ -427,6 +463,8 @@ export class StreamDataView {
    * @param data Byte array to write.
    */
   public setBytes(offset: number, data: Uint8Array): void {
+    this.handleAutoResize(offset, data.byteLength);
+
     for (let i = 0; i < data.byteLength; i++) {
       this.setUint8(offset + i, data[i]);
     }
@@ -498,6 +536,8 @@ export class StreamDataView {
 
     length = typeof length === 'number' ? length : bytes.byteLength;
 
+    this.handleAutoResize(offset, length);
+
     for (let i = 0; i < length; i++) {
       this.view.setUint8(offset + i, bytes[i] || 0);
     }
@@ -547,5 +587,13 @@ export class StreamDataView {
 
     this.setNextBytes(new Uint8Array(byteArray.map(b => parseInt(b, 16))));
     this.resetOffset();
+  }
+
+  private handleAutoResize(offset: number, length: number): void {
+    if (this.autoResize) {
+      if (this.getBuffer().byteLength < offset + length) {
+        this.resize(offset + length);
+      }
+    }
   }
 }
