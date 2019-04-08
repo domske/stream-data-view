@@ -34,6 +34,8 @@ I recommend to use TypeScript. This library has a documented declaration file.
 npm i stream-data-view
 ```
 
+[NPM Package](https://www.npmjs.com/package/stream-data-view)
+
 ### Quick Guide
 
 ```js
@@ -146,4 +148,4 @@ npm run test
 
 **Apache-2.0**
 
-(C) Copyright 2018 Dominik-Andreas Geng
+(C) Copyright 2019 Dominik-Andreas Geng

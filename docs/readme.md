@@ -1,6 +1,6 @@
 # API Documentation
 
-**Version** `1.4.0`
+**Version** `1.5.0`
 ## StreamDataView
 
 [Github](https://github.com/domske/stream-data-view)
@@ -46,8 +46,8 @@ The constructor of this class.
 | buffer | ArrayBuffer , number | Array buffer. |
 | bigEndian | boolean | *(optional)* Use big endian for numbers. (default: little endian) |
 
-
-
+If buffer is omitted, the buffer length is dynamically. (initially `0` (zero))
+See resize-method for more information. A omitted buffer sets the stream length mode to auto-resize.
 
 ---
 
@@ -658,9 +658,30 @@ Also see the method 'toByteString'.
 
 **Returns** `void`
 
+---
 
+### **resize** (length)
+
+Resize the buffer size.
+NOTE: It creates a new buffer.
+
+| Param | Type | Description |
+| --- | --- | --- |
+| length | number | New length of stream. |
+
+
+**Returns** `void`
 
 ---
-*This file was generated automatically.*
 
-*(c) 2018 Dominik Geng*
+### **crop** ()
+
+Crops the stream at its current offset.
+e.g. You have a stream of 10 bytes but only 4 bytes used. (offset at 4).
+This method uses the integrated resize-method.
+
+**Returns** `void`
+
+---
+
+*(c) 2018 - 2019 Dominik Geng*

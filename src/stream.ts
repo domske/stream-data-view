@@ -1,7 +1,7 @@
 /**
  * Stream Date View
  * @author Dominik Geng
- * @copyright 2018 Dominik Geng
+ * @copyright 2018 - 2019 Dominik Geng
  * @license Apache-2.0
  */
 
