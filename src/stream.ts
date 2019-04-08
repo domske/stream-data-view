@@ -5,9 +5,9 @@
  * @license Apache-2.0
  */
 
+import { arrayBufferTransfer } from './helper/buffer';
 import { TextDecoder } from './text-encoding/text-decoder';
 import { TextEncoder } from './text-encoding/text-encoder';
-import { arrayBufferTransfer } from './helper/buffer';
 
 export class StreamDataView {
   /**
