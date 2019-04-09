@@ -1,6 +1,6 @@
 {
   "name": "stream-data-view",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Easy work with data bytes like a pro.",
   "keywords": [
     "stream",
@@ -14,7 +14,7 @@
   "author": "Dominik-Andreas Geng",
   "license": "Apache-2.0",
   "main": "dist/index.js",
-  "types": "dist/dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "webpack",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
