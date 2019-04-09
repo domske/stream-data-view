@@ -438,11 +438,9 @@ export class StreamDataView {
    * @return Byte array like [42, 12, 255, 0]
    */
   public getBytes(offset: number, length?: number): Uint8Array {
-    length = length || this.view.buffer.byteLength - this.offset;
-    const bytes = new Uint8Array(length);
-    for (let i = 0; i < bytes.byteLength; i++) {
-      bytes[i] = this.getUint8(offset + i);
-    }
+    length = length || this.view.buffer.byteLength - offset;
+    const buffer = this.getBuffer().slice(offset, offset + length);
+    const bytes = new Uint8Array(buffer);
     return bytes;
   }
 

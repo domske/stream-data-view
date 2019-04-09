@@ -12,6 +12,7 @@ The documentation also works great with JavaScript.
 - View array buffer.
 - Convert data types. (signed, unsigned, strings, utf-8)
 - Read / write in a stream without worring about the byte offset.
+- Little or big endian. Automatically handled.
 
 ## Use Case
 
@@ -148,4 +149,4 @@ npm run test
 
 **Apache-2.0**
 
-(C) Copyright 2019 Dominik-Andreas Geng
+(C) Copyright 2018 - 2019 Dominik-Andreas Geng

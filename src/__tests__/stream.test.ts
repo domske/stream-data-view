@@ -70,6 +70,20 @@ test('dynamic length', () => {
   expect(text).toBe('Hello World');
 });
 
+test('dynamic length 2', () => {
+  const stream = new StreamDataView();
+  const array = new Uint8Array([0x10, 0x20, 0x30]);
+  stream.setNextBytes(array);
+
+  const buffer = stream.getBuffer();
+  expect(buffer.byteLength).toBe(3);
+
+  const arr = stream.getBytes(0);
+  expect(arr.byteLength).toBe(3);
+
+  expect(Array.from(arr)).toEqual([0x10, 0x20, 0x30]);
+});
+
 test('resize', () => {
   const stream = new StreamDataView(1);
   stream.setNextUint8(0x4c);
