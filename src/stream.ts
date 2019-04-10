@@ -1,14 +1,13 @@
-/**
- * Stream Date View
- * @author Dominik Geng
- * @copyright 2018 - 2019 Dominik Geng
- * @license Apache-2.0
- */
-
 import { arrayBufferTransfer } from './helper/buffer';
 import { TextDecoder } from './text-encoding/text-decoder';
 import { TextEncoder } from './text-encoding/text-encoder';
 
+/**
+ * Stream Data View
+ * @author Dominik Geng
+ * @copyright 2018 - 2019 Dominik Geng
+ * @license Apache-2.0
+ */
 export class StreamDataView {
   /**
    * Creates a new instance of StreamDataView from a string.
