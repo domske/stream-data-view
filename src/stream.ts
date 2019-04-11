@@ -436,7 +436,7 @@ export class StreamDataView {
    * @param length Buffer length.
    * @return Byte array like [42, 12, 255, 0]
    */
-  public getBytes(offset: number, length?: number): Uint8Array {
+  public getBytes(offset = 0, length?: number): Uint8Array {
     length = length || this.view.buffer.byteLength - offset;
     const buffer = this.getBuffer().slice(offset, offset + length);
     const bytes = new Uint8Array(buffer);
@@ -459,11 +459,17 @@ export class StreamDataView {
    * @param offset Buffer offset.
    * @param data Byte array to write.
    */
-  public setBytes(offset: number, data: Uint8Array): void {
-    this.handleAutoResize(offset, data.byteLength);
+  public setBytes(offset: number, data: Uint8Array | ArrayBuffer): void {
+    if (data instanceof ArrayBuffer) {
+      data = new Uint8Array(data);
+    }
 
-    for (let i = 0; i < data.byteLength; i++) {
-      this.setUint8(offset + i, data[i]);
+    const bytes = data as Uint8Array;
+
+    this.handleAutoResize(offset, bytes.byteLength);
+
+    for (let i = 0; i < bytes.byteLength; i++) {
+      this.setUint8(offset + i, bytes[i]);
     }
   }
 
@@ -471,7 +477,7 @@ export class StreamDataView {
    * Writes the next byte array to the buffer.
    * @param data Byte array to write.
    */
-  public setNextBytes(data: Uint8Array): void {
+  public setNextBytes(data: Uint8Array | ArrayBuffer): void {
     this.setBytes(this.offset, data);
     this.offset += data.byteLength;
   }
@@ -584,6 +590,21 @@ export class StreamDataView {
 
     this.setNextBytes(new Uint8Array(byteArray.map(b => parseInt(b, 16))));
     this.resetOffset();
+  }
+
+  /**
+   * Returns the length in bytes of this stream buffer.
+   */
+  public getLength(): number {
+    return this.view.byteLength;
+  }
+
+  /**
+   * Clears the buffer and resets the offset.
+   */
+  public clear(): void {
+    this.view = new DataView(new ArrayBuffer(this.view.byteLength));
+    this.offset = 0;
   }
 
   private handleAutoResize(offset: number, length: number): void {

@@ -103,3 +103,30 @@ test('crop', () => {
   expect(stream.getBuffer().byteLength).toBe(11);
   expect(stream.toTextString()).toBe('Hello World');
 });
+
+test('getLength', () => {
+  const stream = new StreamDataView();
+  stream.setNextString('I like this.');
+  expect(stream.getLength()).toBe(12);
+});
+
+test('getBytes no offset.', () => {
+  const stream = new StreamDataView();
+  stream.setNextString('Bytes from index 0.');
+  expect(stream.getBytes().byteLength).toBe(19);
+});
+
+test('setBytes with ArrayBuffer.', () => {
+  const buffer = new Uint32Array([42]).buffer;
+  const stream = new StreamDataView();
+  stream.setNextBytes(buffer);
+  expect(stream.getUint32(0)).toBe(42);
+});
+
+test('clear', () => {
+  const stream = new StreamDataView(10);
+  stream.setNextInt16(-27);
+  expect(stream.getInt16(0)).toBe(-27);
+  stream.clear();
+  expect(stream.getInt16(0)).toBe(0);
+});

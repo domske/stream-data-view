@@ -1,6 +1,7 @@
 # API Documentation
 
-**Version** `1.5.2`
+**Version** `1.6.0`
+
 ## StreamDataView
 
 [Github](https://github.com/domske/stream-data-view)
@@ -14,10 +15,9 @@
 Creates a new instance of StreamDataView from a string.
 e.g. from the string of toByteString()
 
-| Param | Type | Description |
-| --- | --- | --- |
-| str | string | Byte string like '48 65 6C 6C 6F' |
-
+| Param | Type   | Description                       |
+| ----- | ------ | --------------------------------- |
+| str   | string | Byte string like '48 65 6C 6C 6F' |
 
 **Returns** `StreamDataView` New instance of StreamDataView.
 
@@ -27,24 +27,23 @@ e.g. from the string of toByteString()
 
 Creates a new instance of StreamDataView from a string.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| str | string | Text string like 'Hello' |
-| utf8 | boolean | *(optional)* Handle the string as uft-8. |
-
+| Param | Type    | Description                              |
+| ----- | ------- | ---------------------------------------- |
+| str   | string  | Text string like 'Hello'                 |
+| utf8  | boolean | _(optional)_ Handle the string as uft-8. |
 
 **Returns** `StreamDataView` New instance of StreamDataView.
 
 ---
 
-### ***constructor*** (buffer, bigEndian)
+### **_constructor_** (buffer, bigEndian)
 
 The constructor of this class.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| buffer | ArrayBuffer , number | Array buffer. |
-| bigEndian | boolean | *(optional)* Use big endian for numbers. (default: little endian) |
+| Param     | Type                 | Description                                                       |
+| --------- | -------------------- | ----------------------------------------------------------------- |
+| buffer    | ArrayBuffer , number | Array buffer.                                                     |
+| bigEndian | boolean              | _(optional)_ Use big endian for numbers. (default: little endian) |
 
 If buffer is omitted, the buffer length is dynamically. (initially `0` (zero))
 See resize-method for more information. A omitted buffer sets the stream length mode to auto-resize.
@@ -55,8 +54,6 @@ See resize-method for more information. A omitted buffer sets the stream length 
 
 Returns the array buffer of the data view.
 
-
-
 **Returns** `ArrayBuffer` The buffer of this data view.
 
 ---
@@ -65,10 +62,9 @@ Returns the array buffer of the data view.
 
 Moves the offset relative in a direction.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param  | Type   | Description                              |
+| ------ | ------ | ---------------------------------------- |
 | length | number | Positive or negative number byte length. |
-
 
 **Returns** `void`
 
@@ -78,8 +74,6 @@ Moves the offset relative in a direction.
 
 Moves the offset to zero.
 
-
-
 **Returns** `void`
 
 ---
@@ -87,8 +81,6 @@ Moves the offset to zero.
 ### **getOffset** ()
 
 Returns the current offset.
-
-
 
 **Returns** `number` Offset
 
@@ -98,10 +90,9 @@ Returns the current offset.
 
 Sets a new offset to an absolute position.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param  | Type   | Description                   |
+| ------ | ------ | ----------------------------- |
 | offset | number | New offset (starts from zero) |
-
 
 **Returns** `void`
 
@@ -111,10 +102,9 @@ Sets a new offset to an absolute position.
 
 Reads a 8-bit singed integer.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param  | Type   | Description    |
+| ------ | ------ | -------------- |
 | offset | number | Buffer offset. |
-
 
 **Returns** `number` INT8 value.
 
@@ -124,10 +114,9 @@ Reads a 8-bit singed integer.
 
 Reads a 8-bit unsinged integer.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param  | Type   | Description    |
+| ------ | ------ | -------------- |
 | offset | number | Buffer offset. |
-
 
 **Returns** `number` UINT8 value.
 
@@ -137,8 +126,6 @@ Reads a 8-bit unsinged integer.
 
 Reads the next 8-bit singed integer from current offset.
 
-
-
 **Returns** `number` INT8 value.
 
 ---
@@ -146,8 +133,6 @@ Reads the next 8-bit singed integer from current offset.
 ### **getNextUint8** ()
 
 Reads the next 8-bit unsinged integer from curret offset.
-
-
 
 **Returns** `number` UINT8 value.
 
@@ -157,10 +142,9 @@ Reads the next 8-bit unsinged integer from curret offset.
 
 Reads a 16-bit singed integer.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param  | Type   | Description    |
+| ------ | ------ | -------------- |
 | offset | number | Buffer offset. |
-
 
 **Returns** `number` INT16 value.
 
@@ -170,10 +154,9 @@ Reads a 16-bit singed integer.
 
 Reads a 16-bit unsinged integer.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param  | Type   | Description    |
+| ------ | ------ | -------------- |
 | offset | number | Buffer offset. |
-
 
 **Returns** `number` UINT16 value.
 
@@ -183,8 +166,6 @@ Reads a 16-bit unsinged integer.
 
 Reads the next 16-bit singed integer.
 
-
-
 **Returns** `number` INT16 value.
 
 ---
@@ -192,8 +173,6 @@ Reads the next 16-bit singed integer.
 ### **getNextUint16** ()
 
 Reads the next 16-bit unsinged integer.
-
-
 
 **Returns** `number` UINT16 value.
 
@@ -203,10 +182,9 @@ Reads the next 16-bit unsinged integer.
 
 Reads a 32-bit singed integer.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param  | Type   | Description    |
+| ------ | ------ | -------------- |
 | offset | number | Buffer offset. |
-
 
 **Returns** `number` INT32 value.
 
@@ -216,10 +194,9 @@ Reads a 32-bit singed integer.
 
 Reads a 32-bit unsinged integer.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param  | Type   | Description    |
+| ------ | ------ | -------------- |
 | offset | number | Buffer offset. |
-
 
 **Returns** `number` UINT32 value.
 
@@ -229,8 +206,6 @@ Reads a 32-bit unsinged integer.
 
 Reads the next 32-bit singed integer.
 
-
-
 **Returns** `number` INT32 value.
 
 ---
@@ -238,8 +213,6 @@ Reads the next 32-bit singed integer.
 ### **getNextUint32** ()
 
 Reads the next 32-bit unsinged integer.
-
-
 
 **Returns** `number` UINT32 value.
 
@@ -249,10 +222,9 @@ Reads the next 32-bit unsinged integer.
 
 Reads a float. (32-bit, signed)
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param  | Type   | Description    |
+| ------ | ------ | -------------- |
 | offset | number | Buffer offset. |
-
 
 **Returns** `number` FLOAT value.
 
@@ -262,10 +234,9 @@ Reads a float. (32-bit, signed)
 
 Reads a double. (64-bit signed)
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param  | Type   | Description    |
+| ------ | ------ | -------------- |
 | offset | number | Buffer offset. |
-
 
 **Returns** `number` DOUBLE value.
 
@@ -275,8 +246,6 @@ Reads a double. (64-bit signed)
 
 Reads the next float. (32-bit, signed)
 
-
-
 **Returns** `number` FLOAT value.
 
 ---
@@ -284,8 +253,6 @@ Reads the next float. (32-bit, signed)
 ### **getNextFloat64** ()
 
 Reads the next double. (64-bit, signed)
-
-
 
 **Returns** `number` DOUBLE value.
 
@@ -295,11 +262,10 @@ Reads the next double. (64-bit, signed)
 
 Writes a 8-bit signed integer to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| offset | number | Buffer offset. |
-| value | number | Value to write. |
-
+| Param  | Type   | Description     |
+| ------ | ------ | --------------- |
+| offset | number | Buffer offset.  |
+| value  | number | Value to write. |
 
 **Returns** `void`
 
@@ -309,11 +275,10 @@ Writes a 8-bit signed integer to the buffer.
 
 Writes a 8-bit unsigned integer to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| offset | number | Buffer offset. |
-| value | number | Value to write. |
-
+| Param  | Type   | Description     |
+| ------ | ------ | --------------- |
+| offset | number | Buffer offset.  |
+| value  | number | Value to write. |
 
 **Returns** `void`
 
@@ -323,10 +288,9 @@ Writes a 8-bit unsigned integer to the buffer.
 
 Writes the next 8-bit signed integer to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param | Type   | Description     |
+| ----- | ------ | --------------- |
 | value | number | Value to write. |
-
 
 **Returns** `void`
 
@@ -336,10 +300,9 @@ Writes the next 8-bit signed integer to the buffer.
 
 Writes the next 8-bit unsigned integer to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param | Type   | Description     |
+| ----- | ------ | --------------- |
 | value | number | Value to write. |
-
 
 **Returns** `void`
 
@@ -349,11 +312,10 @@ Writes the next 8-bit unsigned integer to the buffer.
 
 Writes a 16-bit signed integer to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| offset | number | Buffer offset. |
-| value | number | Value to write. |
-
+| Param  | Type   | Description     |
+| ------ | ------ | --------------- |
+| offset | number | Buffer offset.  |
+| value  | number | Value to write. |
 
 **Returns** `void`
 
@@ -363,11 +325,10 @@ Writes a 16-bit signed integer to the buffer.
 
 Writes a 16-bit unsigned integer to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| offset | number | Buffer offset. |
-| value | number | Value to write. |
-
+| Param  | Type   | Description     |
+| ------ | ------ | --------------- |
+| offset | number | Buffer offset.  |
+| value  | number | Value to write. |
 
 **Returns** `void`
 
@@ -377,10 +338,9 @@ Writes a 16-bit unsigned integer to the buffer.
 
 Writes the next 16-bit signed integer to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param | Type   | Description     |
+| ----- | ------ | --------------- |
 | value | number | Value to write. |
-
 
 **Returns** `void`
 
@@ -390,10 +350,9 @@ Writes the next 16-bit signed integer to the buffer.
 
 Writes the next 16-bit unsigned integer to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param | Type   | Description     |
+| ----- | ------ | --------------- |
 | value | number | Value to write. |
-
 
 **Returns** `void`
 
@@ -403,11 +362,10 @@ Writes the next 16-bit unsigned integer to the buffer.
 
 Writes a 32-bit signed integer to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| offset | number | Buffer offset. |
-| value | number | Value to write. |
-
+| Param  | Type   | Description     |
+| ------ | ------ | --------------- |
+| offset | number | Buffer offset.  |
+| value  | number | Value to write. |
 
 **Returns** `void`
 
@@ -417,11 +375,10 @@ Writes a 32-bit signed integer to the buffer.
 
 Writes a 32-bit unsigned integer to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| offset | number | Buffer offset. |
-| value | number | Value to write. |
-
+| Param  | Type   | Description     |
+| ------ | ------ | --------------- |
+| offset | number | Buffer offset.  |
+| value  | number | Value to write. |
 
 **Returns** `void`
 
@@ -431,10 +388,9 @@ Writes a 32-bit unsigned integer to the buffer.
 
 Writes the next 32-bit signed integer to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param | Type   | Description     |
+| ----- | ------ | --------------- |
 | value | number | Value to write. |
-
 
 **Returns** `void`
 
@@ -444,10 +400,9 @@ Writes the next 32-bit signed integer to the buffer.
 
 Writes the next 32-bit unsigned integer to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param | Type   | Description     |
+| ----- | ------ | --------------- |
 | value | number | Value to write. |
-
 
 **Returns** `void`
 
@@ -457,11 +412,10 @@ Writes the next 32-bit unsigned integer to the buffer.
 
 Writes a float to the buffer. (32-bit, signed)
 
-| Param | Type | Description |
-| --- | --- | --- |
-| offset | number | Buffer offset. |
-| value | number | Value to write. |
-
+| Param  | Type   | Description     |
+| ------ | ------ | --------------- |
+| offset | number | Buffer offset.  |
+| value  | number | Value to write. |
 
 **Returns** `void`
 
@@ -471,11 +425,10 @@ Writes a float to the buffer. (32-bit, signed)
 
 Writes a double to the buffer. (64-bit, signed)
 
-| Param | Type | Description |
-| --- | --- | --- |
-| offset | number | Buffer offset. |
-| value | number | Value to write. |
-
+| Param  | Type   | Description     |
+| ------ | ------ | --------------- |
+| offset | number | Buffer offset.  |
+| value  | number | Value to write. |
 
 **Returns** `void`
 
@@ -485,10 +438,9 @@ Writes a double to the buffer. (64-bit, signed)
 
 Writes the next float to the buffer. (32-bit, signed)
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param | Type   | Description     |
+| ----- | ------ | --------------- |
 | value | number | Value to write. |
-
 
 **Returns** `void`
 
@@ -498,10 +450,9 @@ Writes the next float to the buffer. (32-bit, signed)
 
 Writes the next double to the buffer. (64-bit, signed)
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param | Type   | Description     |
+| ----- | ------ | --------------- |
 | value | number | Value to write. |
-
 
 **Returns** `void`
 
@@ -511,11 +462,10 @@ Writes the next double to the buffer. (64-bit, signed)
 
 Reads an array of bytes.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| offset | number | Buffer offset. |
-| length | number | *(optional)* Buffer length. |
-
+| Param  | Type   | Description                 |
+| ------ | ------ | --------------------------- |
+| offset | number | _(optional)_ Buffer offset. |
+| length | number | _(optional)_ Buffer length. |
 
 **Returns** `Uint8Array` Byte array like [42, 12, 255, 0]
 
@@ -525,10 +475,9 @@ Reads an array of bytes.
 
 Reads the next array of bytes.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| length | number | *(optional)* Buffer length. (default: remaining length) |
-
+| Param  | Type   | Description                                             |
+| ------ | ------ | ------------------------------------------------------- |
+| length | number | _(optional)_ Buffer length. (default: remaining length) |
 
 **Returns** `Uint8Array` Byte array like [42, 12, 255, 0]
 
@@ -538,11 +487,10 @@ Reads the next array of bytes.
 
 Writes a byte array to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| offset | number | Buffer offset. |
-| data | Uint8Array | Byte array to write. |
-
+| Param  | Type                      | Description          |
+| ------ | ------------------------- | -------------------- |
+| offset | number                    | Buffer offset.       |
+| data   | Uint8Array \| ArrayBuffer | Byte array to write. |
 
 **Returns** `void`
 
@@ -552,10 +500,9 @@ Writes a byte array to the buffer.
 
 Writes the next byte array to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| data | Uint8Array | Byte array to write. |
-
+| Param | Type                      | Description          |
+| ----- | ------------------------- | -------------------- |
+| data  | Uint8Array \| ArrayBuffer | Byte array to write. |
 
 **Returns** `void`
 
@@ -565,13 +512,12 @@ Writes the next byte array to the buffer.
 
 Reads a string from the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| offset | number | Buffer offset. |
-| length | number | Buffer length. |
-| utf8 | boolean | *(optional)* Use utf-8 encoding. (default: ascii) |
-| untilTerminator | boolean | *(optional)* Only returns the string until zero terminator. |
-
+| Param           | Type    | Description                                                 |
+| --------------- | ------- | ----------------------------------------------------------- |
+| offset          | number  | Buffer offset.                                              |
+| length          | number  | Buffer length.                                              |
+| utf8            | boolean | _(optional)_ Use utf-8 encoding. (default: ascii)           |
+| untilTerminator | boolean | _(optional)_ Only returns the string until zero terminator. |
 
 **Returns** `string` String as utf8 or ascii.
 
@@ -581,12 +527,11 @@ Reads a string from the buffer.
 
 Returns a string from the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| length | number | Buffer length. |
-| utf8 | boolean | *(optional)* Use utf-8 encoding. (default: ascii) |
-| untilTerminator | boolean | *(optional)* Only returns the string until zero terminator. Does not affect the offset shifting. |
-
+| Param           | Type    | Description                                                                                      |
+| --------------- | ------- | ------------------------------------------------------------------------------------------------ |
+| length          | number  | Buffer length.                                                                                   |
+| utf8            | boolean | _(optional)_ Use utf-8 encoding. (default: ascii)                                                |
+| untilTerminator | boolean | _(optional)_ Only returns the string until zero terminator. Does not affect the offset shifting. |
 
 **Returns** `string` String as utf8 or ascii.
 
@@ -596,13 +541,12 @@ Returns a string from the buffer.
 
 Sets a string to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| offset | number | Buffer offset. |
-| data | string | Data to write. |
-| utf8 | boolean | *(optional)* Use utf-8. (default: ascii) |
-| length | number | *(optional)* Optional fixed length write on buffer. |
-
+| Param  | Type    | Description                                         |
+| ------ | ------- | --------------------------------------------------- |
+| offset | number  | Buffer offset.                                      |
+| data   | string  | Data to write.                                      |
+| utf8   | boolean | _(optional)_ Use utf-8. (default: ascii)            |
+| length | number  | _(optional)_ Optional fixed length write on buffer. |
 
 **Returns** `number` The the length in byte of the string. Useful for dynamic length.
 
@@ -612,12 +556,11 @@ Sets a string to the buffer.
 
 Sets a string to the buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| data | string | Data to write. |
-| utf8 | boolean | *(optional)* Use uff-8. (default: ascii) |
-| length | number | *(optional)* Optional fixed length write on buffer. |
-
+| Param  | Type    | Description                                         |
+| ------ | ------- | --------------------------------------------------- |
+| data   | string  | Data to write.                                      |
+| utf8   | boolean | _(optional)_ Use uff-8. (default: ascii)            |
+| length | number  | _(optional)_ Optional fixed length write on buffer. |
 
 **Returns** `void`
 
@@ -627,8 +570,6 @@ Sets a string to the buffer.
 
 Converts the buffer to a pretty print byte string.
 
-
-
 **Returns** `string` Byte string like '48 65 6C 6C 6F'.
 
 ---
@@ -637,10 +578,9 @@ Converts the buffer to a pretty print byte string.
 
 Converts the buffer to a text string.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| utf8 | boolean | *(optional)* Handle it as UTF8 string otherwise ASCII. |
-
+| Param | Type    | Description                                            |
+| ----- | ------- | ------------------------------------------------------ |
+| utf8  | boolean | _(optional)_ Handle it as UTF8 string otherwise ASCII. |
 
 **Returns** `string` Text string as utf8 or ascii.
 
@@ -651,10 +591,9 @@ Converts the buffer to a text string.
 Parses a string of bytes like '48 65 6C 6C 6F'.
 Also see the method 'toByteString'.
 
-| Param | Type | Description |
-| --- | --- | --- |
-| str | string | Byte string. |
-
+| Param | Type   | Description  |
+| ----- | ------ | ------------ |
+| str   | string | Byte string. |
 
 **Returns** `void`
 
@@ -665,10 +604,9 @@ Also see the method 'toByteString'.
 Resize the buffer size.
 NOTE: It creates a new buffer.
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param  | Type   | Description           |
+| ------ | ------ | --------------------- |
 | length | number | New length of stream. |
-
 
 **Returns** `void`
 
@@ -684,4 +622,20 @@ This method uses the integrated resize-method.
 
 ---
 
-*(c) 2018 - 2019 Dominik Geng*
+### **getLength** ()
+
+Returns the length in bytes of this stream buffer.
+
+**Returns** `number`
+
+---
+
+### **clear** ()
+
+Clears the buffer and resets the offset.
+
+**Returns** `void`
+
+---
+
+_(c) 2018 - 2019 Dominik Geng_
