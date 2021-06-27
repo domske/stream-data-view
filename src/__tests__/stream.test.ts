@@ -123,6 +123,13 @@ test('setBytes with ArrayBuffer.', () => {
   expect(stream.getUint32(0)).toBe(42);
 });
 
+test('setBytes with number array', () => {
+  const data = [0x48, 0x65, 0x6c, 0x6c, 0x6f];
+  const stream = new StreamDataView(data.length);
+  stream.setNextBytes(data);
+  expect(stream.toByteString()).toBe('48 65 6C 6C 6F');
+});
+
 test('clear', () => {
   const stream = new StreamDataView(10);
   stream.setNextInt16(-27);

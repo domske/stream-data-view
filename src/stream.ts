@@ -459,8 +459,8 @@ export class StreamDataView {
    * @param offset Buffer offset.
    * @param data Byte array to write.
    */
-  public setBytes(offset: number, data: Uint8Array | ArrayBuffer): void {
-    if (data instanceof ArrayBuffer) {
+  public setBytes(offset: number, data: Uint8Array | ArrayBuffer | number[]): void {
+    if (data instanceof ArrayBuffer || Array.isArray(data)) {
       data = new Uint8Array(data);
     }
 
@@ -477,7 +477,10 @@ export class StreamDataView {
    * Writes the next byte array to the buffer.
    * @param data Byte array to write.
    */
-  public setNextBytes(data: Uint8Array | ArrayBuffer): void {
+  public setNextBytes(data: Uint8Array | ArrayBuffer | number[]): void {
+    if (Array.isArray(data)) {
+      data = new Uint8Array(data);
+    }
     this.setBytes(this.offset, data);
     this.offset += data.byteLength;
   }
