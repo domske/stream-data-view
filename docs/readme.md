@@ -1,6 +1,6 @@
 # API Documentation
 
-**Version** `1.6.0`
+**Version** `1.7.0`
 
 ## StreamDataView
 
@@ -487,10 +487,10 @@ Reads the next array of bytes.
 
 Writes a byte array to the buffer.
 
-| Param  | Type                      | Description          |
-| ------ | ------------------------- | -------------------- |
-| offset | number                    | Buffer offset.       |
-| data   | Uint8Array \| ArrayBuffer | Byte array to write. |
+| Param  | Type                                  | Description          |
+| ------ | ------------------------------------- | -------------------- |
+| offset | number                                | Buffer offset.       |
+| data   | Uint8Array \| ArrayBuffer \| number[] | Byte array to write. |
 
 **Returns** `void`
 
@@ -500,9 +500,9 @@ Writes a byte array to the buffer.
 
 Writes the next byte array to the buffer.
 
-| Param | Type                      | Description          |
-| ----- | ------------------------- | -------------------- |
-| data  | Uint8Array \| ArrayBuffer | Byte array to write. |
+| Param | Type                                  | Description          |
+| ----- | ------------------------------------- | -------------------- |
+| data  | Uint8Array \| ArrayBuffer \| number[] | Byte array to write. |
 
 **Returns** `void`
 
@@ -638,4 +638,4 @@ Clears the buffer and resets the offset.
 
 ---
 
-_(c) 2018 - 2019 Dominik Geng_
+_(c) 2018 - 2021 Dominik Geng_
