@@ -1,3 +1,5 @@
+[![Version][version]][package] [![MIT License][license-badge]][license]
+
 # StreamDataView
 
 Easy work with data bytes like a pro.
@@ -147,6 +149,9 @@ npm run test
 
 ## License
 
-**Apache-2.0**
+**[MIT](LICENSE)** © Copyright 2018 - 2021 Dominik Geng ([@domske](https://github.com/domske))
 
-(C) Copyright 2018 - 2019 Dominik-Andreas Geng
+[license-badge]: https://img.shields.io/npm/l/stream-data-view.svg?style=flat-square
+[license]: https://opensource.org/licenses/MIT
+[version]: https://img.shields.io/npm/v/stream-data-view.svg?style=flat-square
+[package]: https://www.npmjs.com/package/stream-data-view
