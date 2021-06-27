@@ -5,7 +5,7 @@ export class TextDecoder {
     this.encoding = encoding || 'utf-8';
   }
 
-  public decode(data: Uint8Array) {
+  public decode(data: Uint8Array): string {
     const str = String.fromCharCode.apply(null, Array.from(data));
 
     if (this.encoding === 'utf-8') {

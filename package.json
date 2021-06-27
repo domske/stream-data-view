@@ -11,14 +11,17 @@
     "node",
     "browser"
   ],
-  "author": "Dominik-Andreas Geng",
-  "license": "Apache-2.0",
+  "author": "Dominik Geng",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "webpack",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
-    "lint": "tslint -p tsconfig.json",
+    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
+    "lint-fix": "eslint  ./src --ext .js,.jsx,.ts,.tsx --fix",
     "test": "jest --config jestconfig.json",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
@@ -26,22 +29,24 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/domske/stream-data-view.git"
   },
+  "homepage": "https://domske.github.io/stream-data-view/",
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^24.0.11",
-    "clean-webpack-plugin": "^2.0.1",
-    "jest": "^24.7.1",
-    "prettier": "^1.16.4",
-    "ts-jest": "^24.0.2",
-    "ts-loader": "^5.3.3",
-    "tslint": "^5.15.0",
-    "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.4.2",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
+    "@types/jest": "^24.9.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
+    "eslint": "^7.29.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.3.0",
+    "ts-loader": "^5.4.5",
+    "typescript": "^3.9.10",
+    "webpack": "^5.40.0",
+    "webpack-cli": "^4.7.2"
   }
 }

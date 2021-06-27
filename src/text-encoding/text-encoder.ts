@@ -5,7 +5,7 @@ export class TextEncoder {
     this.encoding = encoding || 'utf-8';
   }
 
-  public encode(data: string) {
+  public encode(data: string): Uint8Array {
     if (this.encoding === 'utf-8') {
       data = unescape(encodeURIComponent(data));
     }
