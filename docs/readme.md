@@ -638,4 +638,4 @@ Clears the buffer and resets the offset.
 
 ---
 
-_(c) 2018 - 2021 Dominik Geng_
+_Copyright (c) 2018 - 2021 Dominik Geng_

@@ -1,7 +1,7 @@
 {
   "name": "stream-data-view",
-  "version": "1.7.1",
-  "description": "Easy work with data bytes like a pro.",
+  "version": "1.7.2",
+  "description": "Easily work with data bytes like a pro.",
   "keywords": [
     "stream",
     "buffer",

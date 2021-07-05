@@ -1,6 +1,10 @@
 # Changelog
 
-## 1.7.0
+## 1.7.2
+
+- Minor refactoring.
+
+## 1.7.1
 
 - Ability to pass a simple number array for `setBytes` / `setNextBytes`.
 - The package is now about 50% smaller. (Thanks to the latest build setup.)
