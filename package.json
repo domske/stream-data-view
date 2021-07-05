@@ -1,7 +1,8 @@
 {
   "name": "stream-data-view",
-  "version": "1.7.2",
+  "version": "1.8.0-next",
   "description": "Easily work with data bytes like a pro.",
+  "private": true,
   "keywords": [
     "stream",
     "buffer",
@@ -22,7 +23,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
     "lint-fix": "eslint  ./src --ext .js,.jsx,.ts,.tsx --fix",
-    "test": "jest --config jestconfig.json",
+    "test": "jest",
     "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
@@ -37,15 +38,15 @@
   "homepage": "https://domske.github.io/stream-data-view/",
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^24.9.1",
-    "@typescript-eslint/eslint-plugin": "^4.28.0",
-    "@typescript-eslint/parser": "^4.28.0",
-    "eslint": "^7.29.0",
-    "jest": "^24.9.0",
-    "prettier": "^1.19.1",
-    "ts-jest": "^24.3.0",
-    "ts-loader": "^5.4.5",
-    "typescript": "^3.9.10",
+    "@types/jest": "^26.0.23",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.30.0",
+    "jest": "^27.0.6",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.0.3",
+    "ts-loader": "^9.2.3",
+    "typescript": "^4.3.5",
     "webpack": "^5.40.0",
     "webpack-cli": "^4.7.2"
   }

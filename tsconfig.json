@@ -7,7 +7,7 @@
     "sourceMap": true,
     "lib": ["es2018", "dom"],
     "outDir": "dist",
-    "strict": true
+    "strict": true,
   },
   "include": ["src"],
   "exclude": [

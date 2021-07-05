@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.8.0 [UNPUBLISHED]
+
+- [PLANNED] Handle the capacity for the auto-resize mode to reduce the frequency of buffer copies. (#1)
+- Updated dev dependencies and some setup files.
+
 ## 1.7.2
 
 - Minor refactoring.

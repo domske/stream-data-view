@@ -1,5 +1,5 @@
-import { TextDecoder } from '../text-encoding/text-decoder';
-import { TextEncoder } from '../text-encoding/text-encoder';
+import { TextDecoder } from './text-decoder';
+import { TextEncoder } from './text-encoder';
 
 test('test utf-8', () => {
   const encoder = new TextEncoder('utf-8');

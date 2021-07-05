@@ -1,4 +1,4 @@
-import { StreamDataView } from '../stream';
+import { StreamDataView } from './stream';
 
 // TODO Complete the tests / test more.
 
