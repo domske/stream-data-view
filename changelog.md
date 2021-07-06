@@ -3,6 +3,7 @@
 ## 1.8.0 [UNPUBLISHED]
 
 - [PLANNED] Handle the capacity for the auto-resize mode to reduce the frequency of buffer copies. (#1)
+- Target set from ES5 to ES6.
 - Updated dev dependencies and some setup files.
 
 ## 1.7.2

@@ -1,18 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES6",
+    "module": "ESNext",
     "moduleResolution": "node",
-    "module": "esnext",
     "declaration": true,
     "sourceMap": true,
     "lib": ["es2018", "dom"],
     "outDir": "dist",
-    "strict": true,
+    "strict": true
   },
   "include": ["src"],
-  "exclude": [
-    "node_modules",
-    "**/__tests__/*",
-    "dist"
-  ]
+  "exclude": ["node_modules", "dist"]
 }
