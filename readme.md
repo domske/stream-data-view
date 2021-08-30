@@ -110,11 +110,19 @@ console.log(stream.toTextString());
 Automatically handle UTF-8.
 
 ```js
-const stream new StringDataView(100);
+const stream new StringDataView();
 stream.setNextString('Grün', true);
-console.log(stream.toByteString());
-// Result: 47 72 C3 BC 6E (Character `ü` is `C3 BC` in UTF-8).
-// All string methods supports UTF-8 option. See docs.
+console.log(stream.toByteString(), `(${stream.toByteString()})`);
+// Result: 47 72 C3 BC 6E (5)
+
+// Or another way to measure dynamic lengths. In this example we want to save "Hello" in japanese.
+const str = 'こんにちは';
+const textStream = StreamDataView.fromTextString(str, true);
+const stream = new StreamDataView();
+stream.setNextInt32(textStream.getLength());
+stream.setNextString(str, true);
+// or
+stream.setNextBytes(textStream.getBuffer());
 ```
 
 ## Dependencies
