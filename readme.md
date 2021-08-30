@@ -107,6 +107,16 @@ stream.crop();
 console.log(stream.toTextString());
 ```
 
+Automatically handle UTF-8.
+
+```js
+const stream new StringDataView(100);
+stream.setNextString('Grün', true);
+console.log(stream.toByteString());
+// Result: 47 72 C3 BC 6E (Character `ü` is `C3 BC` in UTF-8).
+// All string methods supports UTF-8 option. See docs.
+```
+
 ## Dependencies
 
 Just JavaScript. But expected ES6 (ES2015). Your browser should support DataView.
